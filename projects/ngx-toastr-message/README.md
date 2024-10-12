@@ -1,24 +1,60 @@
-# NgxToastrMessage
+# ngx-toastr-message
+## A lightweight, customizable Angular library for displaying toast notifications.
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+### Dependencies
+Latest version available for each version of Angular
+<table style="border:1px solid">
+    <tr>
+    <th style="border:1px solid">ngx-toastr-message</th>
+    <th>Angular</th>
+    <tr>
+    <tr>
+    <td style="border:1px solid">0.0.1</td>
+    <td>18.2.x</td>
+    </tr>
+</table>
 
-## Code scaffolding
+### Install
+```
+npm i ngx-toastr-message
+```
 
-Run `ng generate component component-name --project ngx-toastr-message` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-toastr-message`.
-> Note: Don't forget to add `--project ngx-toastr-message` or else it will be added to the default project in your `angular.json` file. 
+### Setup
+app.component.ts
+```
+import {
+  NgxToastrMessageComponent,
+  NgxToastrMessageService,
+} from 'ngx-toastr-message';
+```
+```
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [NgxToastrMessageComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+})
+```
+### Use
+app.component.html
+```
+<lib-ngx-toastr-message></lib-ngx-toastr-message>
+```
+app.component.ts
+```
+private toastrService = inject(NgxToastrMessageService);
+showMessage() {
+    this.toastrService.show('This is a success message!', 'success');
+}
+```
+### Options
+```
+this.toastrService.show('This is a success message!', 'success');
+this.toastrService.show('This is a error message!', 'error');
+this.toastrService.show('This is a info message!', 'info');
+this.toastrService.show('This is a warning message!', 'warning');
+```
 
-## Build
-
-Run `ng build ngx-toastr-message` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build ngx-toastr-message`, go to the dist folder `cd dist/ngx-toastr-message` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test ngx-toastr-message` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### License
+MIT
