@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {
   NgxToastrMessageComponent,
   NgxToastrMessageService,
-} from '../../../../node_modules/ngx-toastr-message';
+} from 'ngx-toastr-message';
 
 @Component({
   selector: 'app-root',
