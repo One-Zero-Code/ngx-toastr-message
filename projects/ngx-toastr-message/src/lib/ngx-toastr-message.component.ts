@@ -12,7 +12,11 @@ import { CommonModule } from '@angular/common';
   template: `
     <div class="toaster-container">
       @for (message of messages; track message) {
-      <div [ngClass]="message.type" class="toaster-message">
+      <div
+        [ngClass]="message.type"
+        [style.fontSize.px]="message.options?.fontSize"
+        class="toaster-message"
+      >
         {{ message.message }}
       </div>
       }
