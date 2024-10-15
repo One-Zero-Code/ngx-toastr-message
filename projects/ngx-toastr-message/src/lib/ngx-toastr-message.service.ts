@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 export interface ToasterMessage {
   message: string;
   type: 'success' | 'error' | 'info' | 'warning';
+  options?: {
+    fontSize?: number;
+  };
 }
 
 @Injectable({
@@ -14,7 +17,11 @@ export class NgxToastrMessageService {
   public messages$ = this.messageSubject.asObservable();
   constructor() {}
 
-  show(message: string, type: 'success' | 'error' | 'info' | 'warning') {
-    this.messageSubject.next({ message, type });
+  show(
+    message: string,
+    type: 'success' | 'error' | 'info' | 'warning',
+    options?: { fontSize?: number }
+  ) {
+    this.messageSubject.next({ message, type, options });
   }
 }
