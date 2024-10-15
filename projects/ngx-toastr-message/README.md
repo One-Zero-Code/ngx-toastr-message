@@ -55,6 +55,9 @@ showMessage() {
 ### Options
 ```
 this.toastrService.show('This is a success message!', 'success');
+this.toastrService.show('This is a success message!', 'success', {
+  fontSize: 14
+});
 this.toastrService.show('This is a error message!', 'error');
 this.toastrService.show('This is a info message!', 'info');
 this.toastrService.show('This is a warning message!', 'warning');
