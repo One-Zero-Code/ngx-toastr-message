@@ -60,7 +60,7 @@ this.toastrService.show('This is a info message!', 'info');
 this.toastrService.show('This is a warning message!', 'warning');
 ```
 
-You can add a custom font
+Change the font size; it should be in pixels.
 ```
 this.toastrService.show('This is a success message!', 'success', {
   fontSize: 14
