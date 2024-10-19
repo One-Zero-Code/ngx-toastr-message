@@ -5,18 +5,15 @@
 Latest version available for each version of Angular
 <table style="border:1px solid">
     <tr>
-    <th style="border:1px solid">ngx-toastr-message</th>
-    <th>Angular</th>
-    <tr>
-    <tr>
-    <td style="border:1px solid">0.0.2</td>
-    <td>18.2.x</td>
+        <th style="border:1px solid">ngx-toastr-message</th>
+        <th>Angular</th>
     </tr>
     <tr>
-    <td style="border:1px solid">0.0.1</td>
-    <td>18.2.x</td>
+        <td style="border:1px solid">0.1.0</td>
+        <td>18.2.x</td>
     </tr>
 </table>
+
 
 ### Install
 ```
