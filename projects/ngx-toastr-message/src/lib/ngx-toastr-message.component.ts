@@ -36,6 +36,7 @@ import { PREDEFINED_FONTS } from './fonts';
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
+  width: 150px;
   color: white;
 }
 
