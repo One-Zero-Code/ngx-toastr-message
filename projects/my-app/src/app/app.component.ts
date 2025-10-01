@@ -18,6 +18,7 @@ export class AppComponent {
   showMessage() {
     this.toastrService.show('This is a success message!', 'success', {
       fontSize: 10,
+      font: 'impact'
     });
   }
 }

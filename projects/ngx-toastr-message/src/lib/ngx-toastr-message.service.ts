@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { PREDEFINED_FONTS } from './fonts';
 
 export interface ToasterMessage {
   message: string;
   type: 'success' | 'error' | 'info' | 'warning';
   options?: {
     fontSize?: number;
+    font?: keyof typeof PREDEFINED_FONTS
   };
 }
 
@@ -20,7 +22,7 @@ export class NgxToastrMessageService {
   show(
     message: string,
     type: 'success' | 'error' | 'info' | 'warning',
-    options?: { fontSize?: number }
+    options?: { fontSize?: number; font?: keyof typeof PREDEFINED_FONTS  }
   ) {
     this.messageSubject.next({ message, type, options });
   }

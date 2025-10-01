@@ -4,6 +4,7 @@ import {
   ToasterMessage,
 } from './ngx-toastr-message.service';
 import { CommonModule } from '@angular/common';
+import { PREDEFINED_FONTS } from './fonts';
 
 @Component({
   selector: 'lib-ngx-toastr-message',
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
       <div
         [ngClass]="message.type"
         [style.fontSize.px]="message.options?.fontSize"
+        [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
         class="toaster-message"
       >
         {{ message.message }}
@@ -56,6 +58,7 @@ import { CommonModule } from '@angular/common';
 })
 export class NgxToastrMessageComponent implements OnInit {
   messages: ToasterMessage[] = [];
+  PREDEFINED_FONTS = PREDEFINED_FONTS;
   private ngxToastrMessageService = inject(NgxToastrMessageService);
 
   ngOnInit(): void {
