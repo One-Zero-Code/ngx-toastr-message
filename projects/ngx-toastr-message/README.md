@@ -8,6 +8,10 @@ Latest version available for each version of Angular
         <th style="border:1px solid">ngx-toastr-message</th>
         <th>Angular</th>
     </tr>
+        <tr>
+        <td style="border:1px solid">0.2.0</td>
+        <td>18.2.x</td>
+    </tr>
     <tr>
         <td style="border:1px solid">0.1.1</td>
         <td>18.2.x</td>
