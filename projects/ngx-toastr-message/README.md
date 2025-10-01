@@ -70,7 +70,27 @@ Change the font size; it should be in pixels.
 this.toastrService.show('This is a success message!', 'success', {
   fontSize: 14
 });
+```
 
+Change the font family.
+```
+this.toastrService.show('This is a success message!', 'success', {
+  fontSize: 14,
+  font: 'arial',
+});
+```
+Available fonts:
+```
+roboto: "'Roboto', sans-serif",
+arial: "Arial, sans-serif",
+verdana: "Verdana, sans-serif",
+tahoma: "Tahoma, sans-serif",
+georgia: "Georgia, serif",
+times: "'Times New Roman', serif",
+courier: "'Courier New', monospace",
+trebuchet: "'Trebuchet MS', sans-serif",
+lucida: "'Lucida Sans Unicode', sans-serif",
+impact: "Impact, sans-serif",
 ```
 
 ### License
