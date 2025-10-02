@@ -85,5 +85,12 @@ lucida: "'Lucida Sans Unicode', sans-serif",
 impact: "Impact, sans-serif",
 ```
 
+3. Change the duration (in milliseconds):
+```typescript
+this.toastrService.show('This is a success message!', 'success', {
+  duration: 5000 // Shows for 5 seconds
+});
+```
+
 ### License
 MIT

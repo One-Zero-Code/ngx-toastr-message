@@ -65,7 +65,9 @@ export class NgxToastrMessageComponent implements OnInit {
   ngOnInit(): void {
     this.ngxToastrMessageService.messages$.subscribe((message) => {
       this.messages.push(message);
-      setTimeout(() => this.removeMessage(message), 3000);
+      const duration = message.options?.duration || 3000; 
+      //setTimeout uses duration to display message for a certain time
+      setTimeout(() => this.removeMessage(message), duration);
     });
   }
 

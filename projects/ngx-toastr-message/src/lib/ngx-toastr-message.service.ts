@@ -7,7 +7,8 @@ export interface ToasterMessage {
   type: 'success' | 'error' | 'info' | 'warning';
   options?: {
     fontSize?: number;
-    font?: keyof typeof PREDEFINED_FONTS
+    font?: keyof typeof PREDEFINED_FONTS;
+    duration?: number; //added
   };
 }
 
@@ -22,7 +23,11 @@ export class NgxToastrMessageService {
   show(
     message: string,
     type: 'success' | 'error' | 'info' | 'warning',
-    options?: { fontSize?: number; font?: keyof typeof PREDEFINED_FONTS  }
+    options?: { 
+      fontSize?: number; 
+      font?: keyof typeof PREDEFINED_FONTS;
+      duration?: number; //added
+    }
   ) {
     this.messageSubject.next({ message, type, options });
   }
