@@ -9,7 +9,7 @@ Latest version available for each version of Angular
         <th>Angular</th>
     </tr>
         <tr>
-        <td style="border:1px solid">0.2.1</td>
+        <td style="border:1px solid">0.3.0</td>
         <td>18.2.x</td>
     </tr>
 </table>
