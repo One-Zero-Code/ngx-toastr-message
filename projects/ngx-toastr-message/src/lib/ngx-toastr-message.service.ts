@@ -9,6 +9,7 @@ export interface ToasterMessage {
     fontSize?: number;
     font?: keyof typeof PREDEFINED_FONTS;
     duration?: number; //added
+    position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
   };
 }
 
@@ -23,10 +24,11 @@ export class NgxToastrMessageService {
   show(
     message: string,
     type: 'success' | 'error' | 'info' | 'warning',
-    options?: { 
-      fontSize?: number; 
+    options?: {
+      fontSize?: number;
       font?: keyof typeof PREDEFINED_FONTS;
       duration?: number; //added
+      position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
     }
   ) {
     this.messageSubject.next({ message, type, options });
