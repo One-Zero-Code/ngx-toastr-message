@@ -12,16 +12,16 @@ import { PREDEFINED_FONTS } from './fonts';
   imports: [CommonModule],
   template: `
     <div class="toaster-container">
-      @for (message of messages; track message) {
+     @for (message of messages; track message) {
       <div
-        [ngClass]="message.type"
+        class="toaster-message"
+        [ngClass]="[message.type, getPositionClass(message)]"
         [style.fontSize.px]="message.options?.fontSize"
         [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
-        class="toaster-message"
       >
         {{ message.message }}
       </div>
-      }
+    }
     </div>
   `,
   styles: `
@@ -33,12 +33,21 @@ import { PREDEFINED_FONTS } from './fonts';
 }
 
 .toaster-message {
+  position: fixed;
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
   width: 150px;
   color: white;
 }
+
+/* Positions */
+  .top-right    { top: 20px; right: 20px; }
+  .top-left     { top: 20px; left: 20px; }
+  .bottom-right { bottom: 20px; right: 20px; }
+  .bottom-left  { bottom: 20px; left: 20px; }
+  .top-center   { top: 20px; left: 50%; transform: translateX(-50%); }
+  .bottom-center{ bottom: 20px; left: 50%; transform: translateX(-50%); }
 
 .success {
   background-color: green;
@@ -65,7 +74,7 @@ export class NgxToastrMessageComponent implements OnInit {
   ngOnInit(): void {
     this.ngxToastrMessageService.messages$.subscribe((message) => {
       this.messages.push(message);
-      const duration = message.options?.duration || 3000; 
+      const duration = message.options?.duration || 3000;
       //setTimeout uses duration to display message for a certain time
       setTimeout(() => this.removeMessage(message), duration);
     });
@@ -73,5 +82,9 @@ export class NgxToastrMessageComponent implements OnInit {
 
   removeMessage(message: ToasterMessage) {
     this.messages = this.messages.filter((m) => m !== message);
+  }
+
+  getPositionClass(message: ToasterMessage): string {
+    return message.options?.position || 'top-right';
   }
 }

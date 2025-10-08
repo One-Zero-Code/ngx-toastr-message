@@ -19,7 +19,8 @@ export class AppComponent {
     this.toastrService.show('This is a success message!', 'success', {
       fontSize: 10,
       font: 'impact',
-      duration:100
+      duration:2000,
+      position: 'bottom-left'
     });
   }
 }
