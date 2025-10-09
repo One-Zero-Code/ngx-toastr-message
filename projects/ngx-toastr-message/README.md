@@ -92,7 +92,7 @@ this.toastrService.show('This is a success message!', 'success', {
 });
 ```
 
-4. Feature 4 — Customizable positions and small presets
+4. Customizable positions and small presets
 ```
 this.toastrService.show('This is a success message!', 'success', {
   fontSize: 10,
