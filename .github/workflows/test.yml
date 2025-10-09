@@ -28,5 +28,15 @@ jobs:
       - name: Fix Rollup optional dependencies
         run: npm rebuild rollup --force
 
+      - name: Build ngx-toastr-message library
+        run: npm run build ngx-toastr-message
+
+      - name: Link library to test app
+        run: |
+          cd dist/ngx-toastr-message
+          npm link
+          cd ../../../
+          npm link ngx-toastr-message
+
       - name: Run Angular tests with coverage
         run: npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage
