@@ -10,6 +10,7 @@ export interface ToasterMessage {
     font?: keyof typeof PREDEFINED_FONTS;
     duration?: number; //added
     position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
+    onClick?: () => void; // callback function for click events
   };
 }
 
@@ -29,6 +30,7 @@ export class NgxToastrMessageService {
       font?: keyof typeof PREDEFINED_FONTS;
       duration?: number; //added
       position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
+      onClick?: () => void; // callback function for click events
     }
   ) {
     this.messageSubject.next({ message, type, options });

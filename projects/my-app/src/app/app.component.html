@@ -1,2 +1,66 @@
-<button (click)="showMessage()">Show Message</button>
+<div class="demo-container">
+  <header class="demo-header">
+    <h1>🔔 {{ title }}</h1>
+    <p>Click the buttons below to see different types of toast notifications</p>
+  </header>
+
+  <div class="demo-section">
+    <h2>Basic Toast Messages</h2>
+    <div class="button-group">
+      <button class="btn btn-success" (click)="showSuccessMessage()">
+        ✅ Success Toast
+      </button>
+      <button class="btn btn-error" (click)="showErrorMessage()">
+        ❌ Error Toast
+      </button>
+      <button class="btn btn-info" (click)="showInfoMessage()">
+        ℹ️ Info Toast
+      </button>
+      <button class="btn btn-warning" (click)="showWarningMessage()">
+        ⚠️ Warning Toast
+      </button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Interactive Clickable Toasts</h2>
+    <div class="button-group">
+      <button class="btn btn-success clickable" (click)="showClickableSuccess()">
+        🖱️ Clickable Success
+      </button>
+      <button class="btn btn-error clickable" (click)="showClickableError()">
+        🖱️ Clickable Error
+      </button>
+      <button class="btn btn-info clickable" (click)="showClickableInfo()">
+        🖱️ Clickable Info
+      </button>
+      <button class="btn btn-warning clickable" (click)="showClickableWarning()">
+        🖱️ Clickable Warning
+      </button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Multiple Toasts Demo</h2>
+    <div class="button-group">
+      <button class="btn btn-primary" (click)="showMultipleToasts()">
+        🚀 Show Multiple Toasts
+      </button>
+    </div>
+  </div>
+
+  <div class="demo-info">
+    <h3>Features Demonstrated:</h3>
+    <ul>
+      <li>✨ Different toast types (success, error, info, warning)</li>
+      <li>📍 Various positions (top-right, top-left, bottom-right, bottom-left, top-center, bottom-center)</li>
+      <li>🖱️ Interactive clickable toasts with custom callbacks</li>
+      <li>⏱️ Auto-dismiss with configurable duration</li>
+      <li>🎨 Custom styling and animations</li>
+      <li>📱 Multiple toasts support</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Toast Component -->
 <lib-ngx-toastr-message></lib-ngx-toastr-message>

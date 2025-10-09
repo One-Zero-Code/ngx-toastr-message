@@ -1,5 +1,111 @@
-<h1 align="center">ngx-toastr-message<h2>
-<p align="center">A lightweight, customizable Angular library for displaying toast notifications.</p>
+# 🔔 ngx-toastr-message
+
+<p align="center">
+  <strong>A lightweight, customizable Angular toast notification library with click callback support</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/npm/v/ngx-toastr-message" alt="npm version">
+  <img src="https://img.shields.io/npm/dm/ngx-toastr-message" alt="npm downloads">
+  <img src="https://img.shields.io/github/license/prateekverma145/ngx-toastr-message" alt="license">
+  <img src="https://img.shields.io/bundlephobia/min/ngx-toastr-message" alt="bundle size">
+</p>
+
+## ✨ Features
+
+- 🎯 **Four Toast Types**: Success, Error, Info, Warning
+- 📍 **Flexible Positioning**: 6 different positions (top-right, top-left, bottom-right, bottom-left, top-center, bottom-center)
+- 🖱️ **Interactive Toasts**: Click callbacks for custom actions
+- 🎨 **Customizable Styling**: Font size, font family, duration control
+- 📱 **Responsive Design**: Automatically adapts to mobile devices
+- 🪶 **Lightweight**: Minimal bundle size impact
+- 🔧 **TypeScript Support**: Full type safety
+- 🚀 **Angular 18+ Compatible**: Works with latest Angular versions
+- 📦 **Standalone Components**: No NgModule required
+
+## 🚀 Quick Start
+
+### Installation
+```bash
+npm install ngx-toastr-message
+```
+
+### Basic Usage
+```typescript
+import { Component, inject } from '@angular/core';
+import { NgxToastrMessageComponent, NgxToastrMessageService } from 'ngx-toastr-message';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [NgxToastrMessageComponent],
+  template: `
+    <button (click)="showToast()">Show Toast</button>
+    <lib-ngx-toastr-message></lib-ngx-toastr-message>
+  `
+})
+export class ExampleComponent {
+  private toastrService = inject(NgxToastrMessageService);
+
+  showToast() {
+    this.toastrService.show('Hello World!', 'success');
+  }
+}
+```
+
+### Interactive Clickable Toasts
+```typescript
+showClickableToast() {
+  this.toastrService.show('Click me for action!', 'info', {
+    duration: 5000,
+    position: 'top-right',
+    onClick: () => {
+      console.log('Toast clicked!');
+      // Navigate, show modal, API call, etc.
+      this.router.navigate(['/details']);
+    }
+  });
+}
+```
+
+## 📖 Complete Documentation
+
+For detailed usage examples, configuration options, and real-world scenarios, see [USAGE.md](./USAGE.md).
+
+## 🎯 API Reference
+
+### Service Methods
+```typescript
+show(message: string, type: ToastType, options?: ToastOptions): void
+```
+
+### Configuration Options
+```typescript
+interface ToastOptions {
+  fontSize?: number;        // Font size in pixels
+  font?: string;           // Font family
+  duration?: number;       // Duration in milliseconds (default: 3000)
+  position?: Position;     // Toast position (default: 'top-right')
+  onClick?: () => void;    // Click callback function
+}
+```
+
+## 🛠️ Development
+
+### Building the Library
+```bash
+ng build ngx-toastr-message
+```
+
+### Running Tests
+```bash
+ng test ngx-toastr-message
+```
+
+### Running the Demo App
+```bash
+ng serve
+```
 
 ### Contributing to ngx-toastr-message
 Thank you for your interest in contributing to ngx-toastr-message! We appreciate your help in improving this project. Please follow the guidelines below to make your contributions smooth and effective.
