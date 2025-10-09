@@ -65,7 +65,6 @@
               }
             ],
             "styles": [
-              "node_modules/font-awesome/css/font-awesome.min.css",
               "projects/my-app/src/styles.scss"
             ],
             "scripts": []
@@ -125,7 +124,6 @@
               }
             ],
             "styles": [
-              "node_modules/font-awesome/css/font-awesome.min.css",
               "projects/my-app/src/styles.scss"
             ],
             "scripts": []
