@@ -9,6 +9,7 @@ export interface ToasterMessage {
     fontSize?: number;
     font?: keyof typeof PREDEFINED_FONTS;
     duration?: number; //added
+    icon?: string;
     position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
   };
 }
@@ -21,6 +22,22 @@ export class NgxToastrMessageService {
   public messages$ = this.messageSubject.asObservable();
   constructor() {}
 
+  private getIcon(type: 'success' | 'error' | 'info' | 'warning'): string {
+    // Choose default icons for each type
+    switch (type) {
+      case 'success':
+        return 'fa fa-check-circle';
+      case 'error':
+        return 'fa fa-times-circle';
+      case 'info':
+        return 'fa fa-info-circle';
+      case 'warning':
+        return 'fa fa-exclamation-triangle';
+      default:
+        return 'fa fa-bell';
+    }
+  }
+
   show(
     message: string,
     type: 'success' | 'error' | 'info' | 'warning',
@@ -28,6 +45,7 @@ export class NgxToastrMessageService {
       fontSize?: number;
       font?: keyof typeof PREDEFINED_FONTS;
       duration?: number; //added
+      icon?: string;
       position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
     }
   ) {
