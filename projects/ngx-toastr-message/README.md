@@ -92,24 +92,18 @@ this.toastrService.show('This is a success message!', 'success', {
 });
 ```
 
-## Feature:
-
-Usage Example:
-
-```typescript
-showMessage() {
-  this.toastrService.show('This is a success message!', 'success', {
-    fontSize: 10,
-    font: 'impact',
-    duration: 2000,
-    position: 'bottom-left'
-  });
-}
+4. Feature 4 — Customizable positions and small presets
+```
+this.toastrService.show('This is a success message!', 'success', {
+  fontSize: 10,
+  font: 'impact',
+  duration: 2000,
+  position: 'bottom-left'
+});
 ```
 
 Positions:
-
-```css
+```
 /* Positions */
 .top-right    { top: 20px; right: 20px; }
 .top-left     { top: 20px; left: 20px; }
