@@ -14,13 +14,18 @@ import { PREDEFINED_FONTS } from './fonts';
     <div class="toaster-container">
      @for (message of messages; track message) {
       <div
-        class="toaster-message"
-        [ngClass]="[message.type, getPositionClass(message)]"
-        [style.fontSize.px]="message.options?.fontSize"
-        [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
-      >
-        {{ message.message }}
-      </div>
+          class="toaster-message"
+          [ngClass]="[message.type, getPositionClass(message)]"
+          [style.fontSize.px]="message.options?.fontSize"
+          [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
+        >
+          <div class="toast-content">
+            <span class="toast-icon">
+              <i [class]="getIconClass(message)"></i>
+            </span>
+            <span class="toast-text">{{ message.message }}</span>
+          </div>
+        </div>
     }
     </div>
   `,
@@ -30,6 +35,15 @@ import { PREDEFINED_FONTS } from './fonts';
   top: 20px;
   right: 20px;
   z-index: 1000;
+}
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast-icon {
+  font-size: 18px;
 }
 
 .toaster-message {
