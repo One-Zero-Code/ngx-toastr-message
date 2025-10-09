@@ -111,4 +111,3 @@ export class NgxToastrMessageComponent implements OnInit {
     return '';
     }
   }
-}
