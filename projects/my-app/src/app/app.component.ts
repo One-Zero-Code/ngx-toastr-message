@@ -16,12 +16,11 @@ export class AppComponent {
   private toastrService = inject(NgxToastrMessageService);
   title = 'my-app';
   showMessage() {
-    this.toastrService.show('This is a success message!', 'success', {
+    this.toastrService.show('This is a success message!', 'warning', {
       fontSize: 10,
       font: 'impact',
       duration:2000,
-      position: 'bottom-left',
-      icon: true
+      position: 'bottom-left'
     });
   }
 }
