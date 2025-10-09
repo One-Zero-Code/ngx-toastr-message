@@ -92,5 +92,32 @@ this.toastrService.show('This is a success message!', 'success', {
 });
 ```
 
+## Feature:
+
+Usage Example:
+
+```typescript
+showMessage() {
+  this.toastrService.show('This is a success message!', 'success', {
+    fontSize: 10,
+    font: 'impact',
+    duration: 2000,
+    position: 'bottom-left'
+  });
+}
+```
+
+Positions:
+
+```css
+/* Positions */
+.top-right    { top: 20px; right: 20px; }
+.top-left     { top: 20px; left: 20px; }
+.bottom-right { bottom: 20px; right: 20px; }
+.bottom-left  { bottom: 20px; left: 20px; }
+.top-center   { top: 20px; left: 50%; transform: translateX(-50%); }
+.bottom-center{ bottom: 20px; left: 50%; transform: translateX(-50%); }
+```
+
 ### License
 MIT
