@@ -23,6 +23,24 @@
   </div>
 
   <div class="demo-section">
+    <h2>Toast Messages with Titles</h2>
+    <div class="button-group">
+      <button class="btn btn-success" (click)="showSuccessWithTitle()">
+        ✅ Success with Title
+      </button>
+      <button class="btn btn-error" (click)="showErrorWithTitle()">
+        ❌ Error with Title
+      </button>
+      <button class="btn btn-info" (click)="showInfoWithTitle()">
+        ℹ️ Info with Title
+      </button>
+      <button class="btn btn-warning" (click)="showWarningWithTitle()">
+        ⚠️ Warning with Title
+      </button>
+    </div>
+  </div>
+
+  <div class="demo-section">
     <h2>Interactive Clickable Toasts</h2>
     <div class="button-group">
       <button class="btn btn-success clickable" (click)="showClickableSuccess()">
@@ -53,11 +71,13 @@
     <h3>Features Demonstrated:</h3>
     <ul>
       <li>✨ Different toast types (success, error, info, warning)</li>
-      <li>📍 Various positions (top-right, top-left, bottom-right, bottom-left, top-center, bottom-center)</li>
+      <li>� Optional titles for enhanced messaging</li>
+      <li>�📍 Various positions (top-right, top-left, bottom-right, bottom-left, top-center, bottom-center)</li>
       <li>🖱️ Interactive clickable toasts with custom callbacks</li>
       <li>⏱️ Auto-dismiss with configurable duration</li>
       <li>🎨 Custom styling and animations</li>
-      <li>📱 Multiple toasts support</li>
+      <li>📱 Multiple toasts support with smart stacking</li>
+      <li>🔄 Backward compatibility (works with or without titles)</li>
     </ul>
   </div>
 </div>

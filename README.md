@@ -13,6 +13,7 @@
 
 ## ✨ Features
 
+- 📄 **Optional Titles**: Add titles to your toast messages for better organization
 - 🎯 **Four Toast Types**: Success, Error, Info, Warning
 - 📍 **Flexible Positioning**: 6 different positions (top-right, top-left, bottom-right, bottom-left, top-center, bottom-center)
 - 🖱️ **Interactive Toasts**: Click callbacks for custom actions
@@ -22,6 +23,7 @@
 - 🔧 **TypeScript Support**: Full type safety
 - 🚀 **Angular 18+ Compatible**: Works with latest Angular versions
 - 📦 **Standalone Components**: No NgModule required
+- 🔄 **Backward Compatible**: Existing code continues to work
 
 ## 🚀 Quick Start
 
@@ -40,21 +42,29 @@ import { NgxToastrMessageComponent, NgxToastrMessageService } from 'ngx-toastr-m
   standalone: true,
   imports: [NgxToastrMessageComponent],
   template: `
-    <button (click)="showToast()">Show Toast</button>
+    <button (click)="showBasicToast()">Basic Toast</button>
+    <button (click)="showToastWithTitle()">Toast with Title</button>
     <lib-ngx-toastr-message></lib-ngx-toastr-message>
   `
 })
 export class ExampleComponent {
   private toastrService = inject(NgxToastrMessageService);
 
-  showToast() {
+  // Basic toast (without title)
+  showBasicToast() {
     this.toastrService.show('Hello World!', 'success');
+  }
+
+  // Toast with title
+  showToastWithTitle() {
+    this.toastrService.show('Welcome!', 'Hello World!', 'success');
   }
 }
 ```
 
 ### Interactive Clickable Toasts
 ```typescript
+// Without title
 showClickableToast() {
   this.toastrService.show('Click me for action!', 'info', {
     duration: 5000,
@@ -62,6 +72,18 @@ showClickableToast() {
     onClick: () => {
       console.log('Toast clicked!');
       // Navigate, show modal, API call, etc.
+      this.router.navigate(['/details']);
+    }
+  });
+}
+
+// With title
+showClickableToastWithTitle() {
+  this.toastrService.show('New Feature!', 'Click me to learn more!', 'info', {
+    duration: 5000,
+    position: 'top-right',
+    onClick: () => {
+      console.log('Toast clicked!');
       this.router.navigate(['/details']);
     }
   });
@@ -76,7 +98,11 @@ For detailed usage examples, configuration options, and real-world scenarios, se
 
 ### Service Methods
 ```typescript
+// Without title
 show(message: string, type: ToastType, options?: ToastOptions): void
+
+// With title  
+show(title: string, message: string, type: ToastType, options?: ToastOptions): void
 ```
 
 ### Configuration Options

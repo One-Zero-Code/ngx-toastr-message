@@ -48,9 +48,42 @@ export class AppComponent {
     });
   }
 
+  // Toast messages with titles
+  showSuccessWithTitle() {
+    this.toastrService.show('Success!', 'Your profile has been updated successfully.', 'success', {
+      fontSize: 14,
+      duration: 4000,
+      position: 'top-right'
+    });
+  }
+
+  showErrorWithTitle() {
+    this.toastrService.show('Error Occurred', 'Failed to save your changes. Please try again.', 'error', {
+      fontSize: 14,
+      duration: 5000,
+      position: 'top-left'
+    });
+  }
+
+  showInfoWithTitle() {
+    this.toastrService.show('New Feature Available', 'Check out our latest dashboard improvements!', 'info', {
+      fontSize: 14,
+      duration: 6000,
+      position: 'bottom-right'
+    });
+  }
+
+  showWarningWithTitle() {
+    this.toastrService.show('Action Required', 'Your session will expire in 5 minutes.', 'warning', {
+      fontSize: 14,
+      duration: 8000,
+      position: 'bottom-left'
+    });
+  }
+
   // Clickable toast messages
   showClickableSuccess() {
-    this.toastrService.show('Click me to view details!', 'success', {
+    this.toastrService.show('Success!', 'Click me to view details!', 'success', {
       fontSize: 14,
       duration: 6000,
       position: 'top-center',
@@ -62,7 +95,7 @@ export class AppComponent {
   }
 
   showClickableError() {
-    this.toastrService.show('Click to report this error', 'error', {
+    this.toastrService.show('Error Report', 'Click to report this error', 'error', {
       fontSize: 14,
       duration: 8000,
       position: 'bottom-center',
@@ -77,7 +110,7 @@ export class AppComponent {
   }
 
   showClickableInfo() {
-    this.toastrService.show('New feature available! Click to learn more.', 'info', {
+    this.toastrService.show('New Feature!', 'New feature available! Click to learn more.', 'info', {
       fontSize: 16,
       font: 'arial',
       duration: 10000,
@@ -90,7 +123,7 @@ export class AppComponent {
   }
 
   showClickableWarning() {
-    this.toastrService.show('Action required! Click to proceed.', 'warning', {
+    this.toastrService.show('Action Required', 'Action required! Click to proceed.', 'warning', {
       fontSize: 14,
       duration: 7000,
       position: 'top-left',
@@ -110,7 +143,7 @@ export class AppComponent {
     this.showSuccessMessage();
     
     setTimeout(() => {
-      this.showInfoMessage();
+      this.showInfoWithTitle();
     }, 500);
     
     setTimeout(() => {

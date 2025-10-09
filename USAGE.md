@@ -1,6 +1,15 @@
 # 🔔 NGX Toastr Message - Usage Guide
 
-A lightweight, customizable toast notification library for Angular applications with click callback support.
+A lightweight, customizable Angular toast notification library with click callback support and optional titles.
+
+## ✨ Key Features
+
+- 📄 **Optional Titles**: Add titles to your toast messages for better organization
+- 🎯 **Flexible API**: Use with or without titles - your choice
+- 🖱️ **Click Callbacks**: Make toasts interactive with custom onClick functions
+- 📍 **Multiple Positions**: 6 different positioning options
+- 🎨 **Customizable**: Font size, font family, duration, and more
+- 🔄 **Backward Compatible**: Existing code continues to work
 
 ## 📦 Installation
 
@@ -54,7 +63,7 @@ export class YourModule { }
 
 ## 🎯 Basic Usage Examples
 
-### Simple Toast Messages
+### Simple Toast Messages (without title)
 
 ```typescript
 export class MyComponent {
@@ -82,14 +91,53 @@ export class MyComponent {
 }
 ```
 
+### Toast Messages with Titles
+
+```typescript
+export class MyComponent {
+  private toastrService = inject(NgxToastrMessageService);
+
+  // Success message with title
+  showSuccessWithTitle() {
+    this.toastrService.show('Success!', 'Your profile has been updated successfully.', 'success');
+  }
+
+  // Error message with title
+  showErrorWithTitle() {
+    this.toastrService.show('Error Occurred', 'Failed to save changes. Please try again.', 'error');
+  }
+
+  // Info message with title
+  showInfoWithTitle() {
+    this.toastrService.show('New Feature Available', 'Check out our latest improvements!', 'info');
+  }
+
+  // Warning message with title
+  showWarningWithTitle() {
+    this.toastrService.show('Action Required', 'Your session will expire in 5 minutes.', 'warning');
+  }
+}
+```
+
 ### Customized Toast Messages
 
 ```typescript
 export class MyComponent {
   private toastrService = inject(NgxToastrMessageService);
 
+  // Without title
   showCustomToast() {
     this.toastrService.show('Custom styled message', 'success', {
+      fontSize: 16,           // Custom font size
+      font: 'arial',          // Custom font family
+      duration: 5000,         // Show for 5 seconds
+      position: 'top-center'  // Custom position
+    });
+  }
+
+  // With title and custom options
+  showCustomToastWithTitle() {
+    this.toastrService.show('Custom Title', 'This is a custom styled message', 'success', {
       fontSize: 16,           // Custom font size
       font: 'arial',          // Custom font family
       duration: 5000,         // Show for 5 seconds
@@ -107,8 +155,20 @@ export class MyComponent {
 export class MyComponent {
   private toastrService = inject(NgxToastrMessageService);
 
+  // Without title
   showClickableToast() {
     this.toastrService.show('Click me for more info!', 'info', {
+      duration: 6000,
+      onClick: () => {
+        console.log('Toast was clicked!');
+        alert('You clicked the toast!');
+      }
+    });
+  }
+
+  // With title
+  showClickableToastWithTitle() {
+    this.toastrService.show('Information', 'Click me for more details!', 'info', {
       duration: 6000,
       onClick: () => {
         console.log('Toast was clicked!');
@@ -128,7 +188,7 @@ export class MyComponent {
 
   // Navigate on click
   showNavigationToast() {
-    this.toastrService.show('New feature available! Click to explore.', 'info', {
+    this.toastrService.show('New Feature!', 'New feature available! Click to explore.', 'info', {
       duration: 8000,
       position: 'top-right',
       onClick: () => {
@@ -139,13 +199,13 @@ export class MyComponent {
 
   // Confirm action on click
   showConfirmationToast() {
-    this.toastrService.show('Click to delete item', 'warning', {
+    this.toastrService.show('Delete Item', 'Click to delete this item', 'warning', {
       duration: 10000,
       onClick: () => {
         const confirmed = confirm('Are you sure you want to delete this item?');
         if (confirmed) {
           this.deleteItem();
-          this.toastrService.show('Item deleted successfully!', 'success');
+          this.toastrService.show('Success!', 'Item deleted successfully!', 'success');
         }
       }
     });
@@ -211,6 +271,10 @@ interface ToastOptions {
   position?: string;       // Position on screen (default: 'top-right')
   onClick?: () => void;    // Click callback function
 }
+
+// Service method signatures
+show(message: string, type: ToastType, options?: ToastOptions): void;                    // Without title
+show(title: string, message: string, type: ToastType, options?: ToastOptions): void;    // With title
 ```
 
 ## 🔥 Real-World Examples
@@ -224,7 +288,7 @@ export class ShoppingCartComponent {
   addToCart(product: Product) {
     // Add product to cart logic...
     
-    this.toastrService.show(`${product.name} added to cart!`, 'success', {
+    this.toastrService.show('Added to Cart', `${product.name} added to cart!`, 'success', {
       duration: 4000,
       position: 'bottom-right',
       onClick: () => {
@@ -234,7 +298,7 @@ export class ShoppingCartComponent {
   }
 
   onPaymentError() {
-    this.toastrService.show('Payment failed. Click to retry.', 'error', {
+    this.toastrService.show('Payment Failed', 'Payment failed. Click to retry.', 'error', {
       duration: 8000,
       onClick: () => {
         this.retryPayment();
@@ -251,7 +315,7 @@ export class ContactFormComponent {
   private toastrService = inject(NgxToastrMessageService);
 
   onSubmitSuccess() {
-    this.toastrService.show('Message sent successfully!', 'success', {
+    this.toastrService.show('Success!', 'Message sent successfully!', 'success', {
       duration: 5000,
       onClick: () => {
         this.router.navigate(['/thank-you']);
@@ -260,7 +324,7 @@ export class ContactFormComponent {
   }
 
   onValidationError() {
-    this.toastrService.show('Please check required fields', 'warning', {
+    this.toastrService.show('Validation Error', 'Please check required fields', 'warning', {
       duration: 6000,
       onClick: () => {
         this.scrollToFirstError();
@@ -284,7 +348,7 @@ export class AppComponent implements OnInit {
   checkForUpdates() {
     // Check for app updates...
     if (updateAvailable) {
-      this.toastrService.show('New version available! Click to update.', 'info', {
+      this.toastrService.show('Update Available', 'New version available! Click to update.', 'info', {
         duration: 15000,
         position: 'top-center',
         onClick: () => {

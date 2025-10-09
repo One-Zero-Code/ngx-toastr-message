@@ -15,13 +15,16 @@ import { PREDEFINED_FONTS } from './fonts';
      @for (message of messages; track message.id; let i = $index) {
       <div
         class="toaster-message"
-        [ngClass]="[message.type, getPositionClass(message), message.options?.onClick ? 'clickable' : '']"
+        [ngClass]="[message.type, getPositionClass(message), message.options?.onClick ? 'clickable' : '', message.title ? 'has-title' : '']"
         [style.fontSize.px]="message.options?.fontSize"
         [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
         [ngStyle]="getStackedStyle(message, i)"
         (click)="onToastClick(message)"
       >
-        {{ message.message }}
+        @if (message.title) {
+          <div class="toast-title">{{ message.title }}</div>
+        }
+        <div class="toast-message">{{ message.message }}</div>
       </div>
     }
     </div>
@@ -51,6 +54,28 @@ import { PREDEFINED_FONTS } from './fonts';
     pointer-events: auto;
     word-wrap: break-word;
     z-index: 1001;
+  }
+
+  .toast-title {
+    font-weight: 700;
+    font-size: 1.1em;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    opacity: 0.95;
+  }
+
+  .toast-message {
+    font-weight: 400;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  .toaster-message.has-title {
+    padding: 14px 20px 16px 20px;
+  }
+
+  .toaster-message.has-title .toast-message {
+    font-size: 0.92em;
   }
 
   .toaster-message.clickable {
@@ -217,7 +242,9 @@ export class NgxToastrMessageComponent implements OnInit {
 
   getStackedStyle(message: ToasterMessage & { id: string }, index: number): any {
     const position = message.options?.position || 'top-right';
-    const offset = index * 70; // 70px spacing between toasts
+    // Adjust spacing based on whether toast has title (taller toasts need more space)
+    const spacing = message.title ? 85 : 70;
+    const offset = index * spacing;
     
     const baseStyles = {
       'z-index': 1001 + index
