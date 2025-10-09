@@ -1,26 +1,6 @@
 {
   "name": "ngx-toastr-message",
-  "version": "0.4.0",
-  "description": "A lightweight, customizable Angular toast notification library with click callback support",
-  "keywords": [
-    "angular",
-    "toast",
-    "notification",
-    "alert",
-    "message",
-    "popup",
-    "snackbar",
-    "clickable",
-    "interactive",
-    "lightweight"
-  ],
-  "author": "Prateek Verma",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/prateekverma145/ngx-toastr-message.git"
-  },
-  "homepage": "https://github.com/prateekverma145/ngx-toastr-message#readme",
+  "version": "0.3.0",
   "peerDependencies": {
     "@angular/common": "^18.2.0",
     "@angular/core": "^18.2.0"
