@@ -87,4 +87,28 @@ export class NgxToastrMessageComponent implements OnInit {
   getPositionClass(message: ToasterMessage): string {
     return message.options?.position || 'top-right';
   }
+  getIconClass(message: ToasterMessage): string {
+    const iconOption = message.options?.icon;
+
+    //if icon is a custom string, use it
+    if (typeof iconOption === 'string') return iconOption;
+
+    //if icon = true, auto-select icon based on type
+    if (iconOption === true) {
+      switch (message.type) {
+        case 'success':
+          return 'fa fa-check-circle';
+        case 'error':
+          return 'fa fa-times-circle';
+        case 'info':
+          return 'fa fa-info-circle';
+        case 'warning':
+          return 'fa fa-exclamation-triangle';
+      }
+    }
+
+    // No icon
+    return '';
+    }
+  }
 }
