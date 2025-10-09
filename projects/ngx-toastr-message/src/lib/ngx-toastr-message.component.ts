@@ -14,18 +14,13 @@ import { PREDEFINED_FONTS } from './fonts';
     <div class="toaster-container">
      @for (message of messages; track message) {
       <div
-          class="toaster-message"
-          [ngClass]="[message.type, getPositionClass(message)]"
-          [style.fontSize.px]="message.options?.fontSize"
-          [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
-        >
-          <div class="toast-content">
-            <span class="toast-icon">
-              <i [class]="getIconClass(message)"></i>
-            </span>
-            <span class="toast-text">{{ message.message }}</span>
-          </div>
-        </div>
+        class="toaster-message"
+        [ngClass]="[message.type, getPositionClass(message)]"
+        [style.fontSize.px]="message.options?.fontSize"
+        [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
+      >
+        {{ message.message }}
+      </div>
     }
     </div>
   `,
@@ -35,11 +30,6 @@ import { PREDEFINED_FONTS } from './fonts';
   top: 20px;
   right: 20px;
   z-index: 1000;
-}
-
-.toast-icon {
-  margin-right: 8px;
-  font-size: 18px;
 }
 
 .toaster-message {
@@ -97,7 +87,6 @@ export class NgxToastrMessageComponent implements OnInit {
   getPositionClass(message: ToasterMessage): string {
     return message.options?.position || 'top-right';
   }
-
   getIconClass(message: ToasterMessage): string {
     const iconOption = message.options?.icon;
 
@@ -122,4 +111,4 @@ export class NgxToastrMessageComponent implements OnInit {
     return '';
     }
   }
-
+}

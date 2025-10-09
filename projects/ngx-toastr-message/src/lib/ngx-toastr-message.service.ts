@@ -22,8 +22,6 @@ export class NgxToastrMessageService {
   public messages$ = this.messageSubject.asObservable();
   constructor() {}
 
-
-
   show(
     message: string,
     type: 'success' | 'error' | 'info' | 'warning',
