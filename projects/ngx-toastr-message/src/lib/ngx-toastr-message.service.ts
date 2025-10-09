@@ -11,6 +11,8 @@ export interface ToasterMessage {
     duration?: number; //added
     icon?: boolean | string;
     position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
+    showProgressBar?: boolean;
+    progressBarColor?: string;
   };
 }
 
@@ -20,7 +22,7 @@ export interface ToasterMessage {
 export class NgxToastrMessageService {
   private messageSubject = new Subject<ToasterMessage>();
   public messages$ = this.messageSubject.asObservable();
-  constructor() {}
+  constructor() { }
 
   show(
     message: string,
@@ -31,6 +33,8 @@ export class NgxToastrMessageService {
       duration?: number; //added
       icon?: boolean | string;
       position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
+      showProgressBar?: boolean;
+      progressBarColor?: string;
     }
   ) {
     this.messageSubject.next({ message, type, options });
