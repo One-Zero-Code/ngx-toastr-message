@@ -30,6 +30,7 @@ import { PREDEFINED_FONTS } from './fonts';
     </div>
   `,
   styles: `
+  @import "font-awesome.min.css";
   .toaster-container {
   position: fixed;
   top: 20px;
@@ -123,5 +124,5 @@ export class NgxToastrMessageComponent implements OnInit {
 
     // No icon
     return '';
-    }
   }
+}
