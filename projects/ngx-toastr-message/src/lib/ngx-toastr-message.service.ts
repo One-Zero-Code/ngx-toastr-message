@@ -23,7 +23,19 @@ export class NgxToastrMessageService {
   public messages$ = this.messageSubject.asObservable();
   constructor() {}
 
-  // Method overload: with title
+  // Method overloads for backward compatibility and new title feature
+  show(
+    message: string,
+    type: 'success' | 'error' | 'info' | 'warning',
+    options?: {
+      fontSize?: number;
+      font?: keyof typeof PREDEFINED_FONTS;
+      duration?: number;
+      position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
+      onClick?: () => void;
+    }
+  ): void;
+  
   show(
     title: string,
     message: string,
@@ -37,20 +49,6 @@ export class NgxToastrMessageService {
     }
   ): void;
 
-  // Method overload: without title (backward compatibility)
-  show(
-    message: string,
-    type: 'success' | 'error' | 'info' | 'warning',
-    options?: {
-      fontSize?: number;
-      font?: keyof typeof PREDEFINED_FONTS;
-      duration?: number;
-      position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
-      onClick?: () => void;
-    }
-  ): void;
-
-  // Implementation
   show(
     titleOrMessage: string,
     messageOrType: string | 'success' | 'error' | 'info' | 'warning',
@@ -72,27 +70,21 @@ export class NgxToastrMessageService {
     let title: string | undefined;
     let message: string;
     let type: 'success' | 'error' | 'info' | 'warning';
-    let finalOptions: typeof options;
+    let finalOptions: any;
 
-    // Check if we have title (4 parameters) or just message (3 parameters)
-    if (options !== undefined) {
-      // Format: show(title, message, type, options)
+    // Check if first parameter is title (4 parameters) or message (3 parameters)
+    if (arguments.length >= 4 || (arguments.length === 3 && typeof typeOrOptions === 'string')) {
+      // New signature: show(title, message, type, options)
       title = titleOrMessage;
       message = messageOrType as string;
       type = typeOrOptions as 'success' | 'error' | 'info' | 'warning';
       finalOptions = options;
-    } else if (typeof typeOrOptions === 'string') {
-      // Format: show(title, message, type) - no options
-      title = titleOrMessage;
-      message = messageOrType as string;
-      type = typeOrOptions as 'success' | 'error' | 'info' | 'warning';
-      finalOptions = undefined;
     } else {
-      // Format: show(message, type, options) - backward compatibility
+      // Old signature: show(message, type, options)
       title = undefined;
       message = titleOrMessage;
       type = messageOrType as 'success' | 'error' | 'info' | 'warning';
-      finalOptions = typeOrOptions as typeof options;
+      finalOptions = typeOrOptions;
     }
 
     this.messageSubject.next({ title, message, type, options: finalOptions });
