@@ -19,9 +19,11 @@ export class AppComponent {
     this.toastrService.show('This is a success message!', 'success', {
       fontSize: 10,
       font: 'impact',
-      duration:2000,
+      duration: 3000,
       position: 'bottom-left',
-      icon: true
+      icon: true,
+      showProgressBar: true,
+      progressBarColor: '#4caf50',
     });
   }
 }

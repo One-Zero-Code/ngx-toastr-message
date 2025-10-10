@@ -25,6 +25,13 @@ import { PREDEFINED_FONTS } from './fonts';
             </span>
             <span class="toast-text">{{ message.message }}</span>
           </div>
+          <!-- ✅ Progress bar -->
+          <div
+            *ngIf="message.options?.showProgressBar"
+            class="toast-progress-bar"
+            [style.background]="message.options?.progressBarColor || 'rgba(255,255,255,0.7)'"
+            [style.animationDuration.ms]="message.options?.duration || 3000"
+          ></div>
         </div>
     }
     </div>
@@ -78,6 +85,20 @@ import { PREDEFINED_FONTS } from './fonts';
 .warning {
   background-color: orange;
 }
+.toast-progress-bar {
+      height: 4px;
+      width: 100%;
+      margin-top: 6px;
+      border-radius: 2px;
+      animation-name: progressBar;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes progressBar {
+      from { width: 100%; }
+      to { width: 0%; }
+    }
 `,
 })
 export class NgxToastrMessageComponent implements OnInit {
