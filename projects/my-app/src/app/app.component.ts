@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import {
   NgxToastrMessageComponent,
   NgxToastrMessageService,
-} from 'ngx-toastr-message';
+} from '../../../ngx-toastr-message/src/public-api';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgxToastrMessageComponent],
+  imports: [NgxToastrMessageComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  // styleUrl: './app.component.scss',
 })
 export class AppComponent {
   private toastrService = inject(NgxToastrMessageService);
@@ -22,6 +21,16 @@ export class AppComponent {
       duration:2000,
       position: 'bottom-left',
       icon: true
+    });
+  }
+
+ 
+
+  showMessageWithTitle() {
+    this.toastrService.show('Success!', 'This is a success message with title!', 'success', {
+      fontSize: 14,
+      duration: 4000,
+      position: 'top-right'
     });
   }
 }
