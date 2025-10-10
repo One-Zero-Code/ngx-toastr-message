@@ -55,6 +55,19 @@ import { PREDEFINED_FONTS } from './fonts';
   color: white;
 }
 
+.toaster-message.clickable {
+  cursor: pointer;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.toaster-message.clickable:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.toaster-message.clickable:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 /* Positions */
   .top-right    { top: 20px; right: 20px; }
   .top-left     { top: 20px; left: 20px; }
@@ -72,7 +85,7 @@ import { PREDEFINED_FONTS } from './fonts';
 }
 
 .info {
-  background-color: blue;
+  background-color: green;
 }
 
 .warning {
@@ -96,6 +109,12 @@ export class NgxToastrMessageComponent implements OnInit {
 
   removeMessage(message: ToasterMessage) {
     this.messages = this.messages.filter((m) => m !== message);
+  }
+
+  onToastClick(message: ToasterMessage) {
+    if (message.options?.onClick) {
+      message.options.onClick();
+    }
   }
 
   getPositionClass(message: ToasterMessage): string {
