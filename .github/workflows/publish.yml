@@ -1,5 +1,6 @@
 name: Publish ngx-toastr-message
 
+# Trigger only on tags like v1.0.0
 on:
   push:
     tags:
@@ -21,17 +22,17 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      # Clean node_modules only
+      # Clean only node_modules (keep package-lock.json for npm ci)
       - name: Clean node_modules
-        run: rm -rf node_modules
+        run: rm -rf node_modules package-lock.json
 
-      # Install dependencies using npm ci (lockfile must be in sync)
+      # Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # Optional: Lint if you have a script
-      # - name: Lint
-      #   run: npm run lint
+      # Lint
+      - name: Lint
+        run: npm run lint
 
       # Run tests
       - name: Run tests
@@ -54,7 +55,6 @@ jobs:
           tag: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 
 
 
