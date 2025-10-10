@@ -1,9 +1,10 @@
 {
   "name": "ngx-toastr-message",
-  "version": "0.5.1",
+  "version": "0.5.3",
   "peerDependencies": {
     "@angular/common": "^18.2.0",
-    "@angular/core": "^18.2.0"
+    "@angular/core": "^18.2.0",
+    "font-awesome": "^4.7.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
