@@ -10,6 +10,7 @@ export interface ToasterMessage {
     fontSize?: number;
     font?: keyof typeof PREDEFINED_FONTS;
     duration?: number; //added
+    icon?: boolean | string;
     position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
     onClick?: () => void; // callback function for click events
   };
@@ -30,41 +31,9 @@ export class NgxToastrMessageService {
     options?: {
       fontSize?: number;
       font?: keyof typeof PREDEFINED_FONTS;
-      duration?: number;
-      position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
-      onClick?: () => void;
-    }
-  ): void;
-  
-  show(
-    title: string,
-    message: string,
-    type: 'success' | 'error' | 'info' | 'warning',
-    options?: {
-      fontSize?: number;
-      font?: keyof typeof PREDEFINED_FONTS;
-      duration?: number;
-      position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
-      onClick?: () => void;
-    }
-  ): void;
-
-  show(
-    titleOrMessage: string,
-    messageOrType: string | 'success' | 'error' | 'info' | 'warning',
-    typeOrOptions?: 'success' | 'error' | 'info' | 'warning' | {
-      fontSize?: number;
-      font?: keyof typeof PREDEFINED_FONTS;
-      duration?: number;
-      position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
-      onClick?: () => void;
-    },
-    options?: {
-      fontSize?: number;
-      font?: keyof typeof PREDEFINED_FONTS;
-      duration?: number;
-      position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
-      onClick?: () => void;
+      duration?: number; //added
+      icon?: boolean | string;
+      position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
     }
   ) {
     let title: string | undefined;
