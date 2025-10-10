@@ -1,0 +1,35 @@
+name: Release ngx-toastr-message
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    if: github.actor == 'YOUR_GITHUB_USERNAME'  # Only run for admin
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm run test -- --watch=false --browsers=ChromeHeadless
+
+      - name: Build library
+        run: npm run build ngx-toastr-message
+
+      - name: Run Semantic Release
+        run: npx semantic-release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
