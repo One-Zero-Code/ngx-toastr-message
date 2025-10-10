@@ -113,5 +113,47 @@ Positions:
 .bottom-center{ bottom: 20px; left: 50%; transform: translateX(-50%); }
 ```
 
+5. Customizable Toastr Icons
+
+You can now customize the icons displayed in your toastr messages.
+
+Install Font Awesome
+Install Font Awesome version 4.7.0:
+
+```bash
+npm install font-awesome@4.7.0 --save
+```
+Import Font Awesome CSS
+
+In your angular.json file, add the Font Awesome stylesheet under the styles array (if not already included):
+```json
+"styles": [
+  "node_modules/font-awesome/css/font-awesome.min.css",
+  "src/styles.css"
+]
+```
+
+This enables the default icon according to the message type (success, warning, info, error).
+
+Examples
+Enable the default icon
+```typeScript
+this.toastrService.show('This is a success message!', 'success', {
+  icon: true
+});
+```
+Disable the icon
+```typeScript
+this.toastrService.show('This is a success message!', 'success', {
+  icon: false
+});
+```
+Add a custom icon
+```typeScript
+this.toastrService.show('This is a success message!', 'success', {
+  icon: 'fa fa-check'
+});
+```
+
 ### License
 MIT
