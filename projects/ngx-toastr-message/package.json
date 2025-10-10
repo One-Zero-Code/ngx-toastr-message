@@ -1,6 +1,6 @@
 {
   "name": "ngx-toastr-message",
-  "version": "0.5.13",
+  "version": "0.5.14",
   "peerDependencies": {
     "@angular/common": "^18.2.0",
     "@angular/core": "^18.2.0",
