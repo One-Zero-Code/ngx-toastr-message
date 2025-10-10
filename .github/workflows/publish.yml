@@ -6,6 +6,10 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write
+  issues: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
