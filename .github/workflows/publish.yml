@@ -26,6 +26,11 @@ jobs:
       - name: Clean node_modules
         run: rm -rf node_modules
 
+      # Clean node_modules and package-lock.json
+      - name: Clean npm
+        run: |
+          rm -rf node_modules package-lock.json
+
       # Install dependencies
       - name: Install dependencies
         run: npm ci
@@ -83,10 +88,10 @@ jobs:
 #           node-version: '18'  # stable for Angular builds
 #           registry-url: 'https://registry.npmjs.org'
 
-#       # Clean node_modules and package-lock.json
-#       - name: Clean npm
-#         run: |
-#           rm -rf node_modules package-lock.json
+      # # Clean node_modules and package-lock.json
+      # - name: Clean npm
+      #   run: |
+      #     rm -rf node_modules package-lock.json
 
 #       # Install dependencies
 #       - name: Install dependencies
