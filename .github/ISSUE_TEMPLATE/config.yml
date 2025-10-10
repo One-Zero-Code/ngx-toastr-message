@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://www.npmjs.com/package/ngx-toastr-message
+    about: Check the docs before creating a new issue.
+  - name: Discussions
+    url: https://github.com/<your-username>/<your-repo>/discussions
+    about: For questions or general ideas, please use discussions.

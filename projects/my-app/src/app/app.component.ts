@@ -19,7 +19,8 @@ export class AppComponent {
       fontSize: 10,
       font: 'impact',
       duration:2000,
-      position: 'bottom-left'
+      position: 'bottom-left',
+      icon: true
     });
   }
 

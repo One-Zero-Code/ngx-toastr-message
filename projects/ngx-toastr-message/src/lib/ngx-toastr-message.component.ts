@@ -14,14 +14,18 @@ import { PREDEFINED_FONTS } from './fonts';
     <div class="toaster-container">
      @for (message of messages; track message) {
       <div
-        class="toaster-message"
-        [ngClass]="[message.type, getPositionClass(message), message.options?.onClick ? 'clickable' : '']"
-        [style.fontSize.px]="message.options?.fontSize"
-        [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
-        (click)="onToastClick(message)"
-      >
-        {{ message.message }}
-      </div>
+          class="toaster-message"
+          [ngClass]="[message.type, getPositionClass(message)]"
+          [style.fontSize.px]="message.options?.fontSize"
+          [style.fontFamily]="message.options?.font ? PREDEFINED_FONTS[message.options?.font!] : 'inherit'"
+        >
+          <div class="toast-content">
+            <span class="toast-icon">
+              <i [class]="getIconClass(message)"></i>
+            </span>
+            <span class="toast-text">{{ message.message }}</span>
+          </div>
+        </div>
     }
     </div>
   `,
@@ -31,6 +35,15 @@ import { PREDEFINED_FONTS } from './fonts';
   top: 20px;
   right: 20px;
   z-index: 1000;
+}
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast-icon {
+  font-size: 18px;
 }
 
 .toaster-message {
@@ -107,4 +120,27 @@ export class NgxToastrMessageComponent implements OnInit {
   getPositionClass(message: ToasterMessage): string {
     return message.options?.position || 'top-right';
   }
-}
+  getIconClass(message: ToasterMessage): string {
+    const iconOption = message.options?.icon;
+
+    //if icon is a custom string, use it
+    if (typeof iconOption === 'string') return iconOption;
+
+    //if icon = true, auto-select icon based on type
+    if (iconOption === true) {
+      switch (message.type) {
+        case 'success':
+          return 'fa fa-check-circle';
+        case 'error':
+          return 'fa fa-times-circle';
+        case 'info':
+          return 'fa fa-info-circle';
+        case 'warning':
+          return 'fa fa-exclamation-triangle';
+      }
+    }
+
+    // No icon
+    return '';
+    }
+  }

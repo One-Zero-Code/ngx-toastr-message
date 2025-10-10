@@ -9,7 +9,7 @@ Latest version available for each version of Angular
         <th>Angular</th>
     </tr>
         <tr>
-        <td style="border:1px solid">0.3.0</td>
+        <td style="border:1px solid">0.4.0</td>
         <td>18.2.x</td>
     </tr>
 </table>
@@ -90,6 +90,27 @@ impact: "Impact, sans-serif",
 this.toastrService.show('This is a success message!', 'success', {
   duration: 5000 // Shows for 5 seconds
 });
+```
+
+4. Customizable positions and small presets
+```
+this.toastrService.show('This is a success message!', 'success', {
+  fontSize: 10,
+  font: 'impact',
+  duration: 2000,
+  position: 'bottom-left'
+});
+```
+
+Positions:
+```
+/* Positions */
+.top-right    { top: 20px; right: 20px; }
+.top-left     { top: 20px; left: 20px; }
+.bottom-right { bottom: 20px; right: 20px; }
+.bottom-left  { bottom: 20px; left: 20px; }
+.top-center   { top: 20px; left: 50%; transform: translateX(-50%); }
+.bottom-center{ bottom: 20px; left: 50%; transform: translateX(-50%); }
 ```
 
 ### License
