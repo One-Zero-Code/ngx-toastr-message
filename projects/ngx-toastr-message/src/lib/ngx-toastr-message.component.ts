@@ -30,7 +30,6 @@ import { PREDEFINED_FONTS } from './fonts';
     </div>
   `,
   styles: `
-  @import "font-awesome.min.css";
   .toaster-container {
   position: fixed;
   top: 20px;
