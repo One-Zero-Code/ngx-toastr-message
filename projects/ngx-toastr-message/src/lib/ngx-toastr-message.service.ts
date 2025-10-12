@@ -13,6 +13,7 @@ export interface ToasterMessage {
     position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
     showProgressBar?: boolean;
     progressBarColor?: string;
+    showCloseButton?: boolean;
   };
 }
 
