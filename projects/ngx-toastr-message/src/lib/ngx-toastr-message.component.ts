@@ -24,6 +24,7 @@ import { PREDEFINED_FONTS } from './fonts';
               <i [class]="getIconClass(message)"></i>
             </span>
             <span class="toast-text">{{ message.message }}</span>
+            <button *ngIf="message.options?.showCloseButton" class="toast-close" (click)="closeMessage(message)">×</button>
           </div>
           <!-- ✅ Progress bar -->
           <div
@@ -46,20 +47,49 @@ import { PREDEFINED_FONTS } from './fonts';
 .toast-content {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.toast-text {
+  flex: 1;
+  margin-right: 8px;
 }
 
 .toast-icon {
   font-size: 18px;
+  margin-right: 8px;
 }
 
 .toaster-message {
-  position: fixed;
+  position: relative;
   margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  width: 150px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  min-width: 280px;
+  max-width: 400px;
   color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.toast-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.toast-close:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Positions */
@@ -144,5 +174,9 @@ export class NgxToastrMessageComponent implements OnInit {
 
     // No icon
     return '';
+  }
+  // Add missing closeMessage method for close button
+  closeMessage(message: ToasterMessage) {
+    this.removeMessage(message);
   }
 }

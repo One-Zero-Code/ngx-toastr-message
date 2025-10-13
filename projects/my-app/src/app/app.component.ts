@@ -24,6 +24,7 @@ export class AppComponent {
       icon: true,
       showProgressBar: true,
       progressBarColor: '#4caf50',
+      showCloseButton: true,
     });
   }
 }
