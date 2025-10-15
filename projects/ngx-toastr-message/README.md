@@ -155,5 +155,25 @@ this.toastrService.show('This is a success message!', 'success', {
 });
 ```
 
+6. Show a progress bar and Change progress bar color
+```
+this.toastrService.show('Uploading file...', 'info', {
+  showProgressBar: true // Displays a bottom progress indicator
+});
+```
+```
+this.toastrService.show('Processing data...', 'info', {
+  showProgressBar: true,
+  progressBarColor: '#4caf50' // Green progress bar
+});
+```
+
+7. Show close button
+```
+this.toastrService.show('Error occurred while saving!', 'error', {
+  showCloseButton: true // Adds a close (×) button
+});
+```
+
 ### License
 MIT
