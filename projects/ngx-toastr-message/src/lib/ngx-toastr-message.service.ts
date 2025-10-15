@@ -36,6 +36,7 @@ export class NgxToastrMessageService {
       position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';//positions
       showProgressBar?: boolean;
       progressBarColor?: string;
+      showCloseButton?: boolean;
     }
   ) {
     this.messageSubject.next({ message, type, options });
