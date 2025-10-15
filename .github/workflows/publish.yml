@@ -53,3 +53,8 @@ jobs:
           generateReleaseNotes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+# git tag
+# git tag -a v0.7.0 -m "Release Version 0.7.0"
+# git push origin v0.7.0
